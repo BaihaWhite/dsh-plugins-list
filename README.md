@@ -1,149 +1,101 @@
 # DSH 插件列表
 
-本仓库记录当前 DSH (DeepSeek Harness) 实例中已安装的所有插件，包括官方插件、社区插件和自定义插件。
+这是一个用于记录和管理 DeepSeek Harness (DSH) 已安装插件的仓库。
 
-## 📦 已安装插件概览
+## 📋 仓库内容
 
-### 核心插件包
+- **README.md** - 本文件，包含仓库介绍和安装提示词
+- **list.md** - 完整的插件列表，包含所有插件的项目网址
 
-| 包名 | 版本 | 说明 |
-|------|------|------|
-| `@deepseek-ai/dsh` | 0.1.0-rc.6 | DSH 核心引擎 |
-| `@deepseek-ai/dsh-base` | - | DSH 基础包 |
-| `@deepseek-ai/dsh-web-app` | - | DSH Web 应用 |
-| `@deepseek-ai/dsh-headless` | - | DSH 无头模式 |
+## 🔍 已安装插件概览
 
-### Web UI 插件 (来自 @linxin666/dsh-web-ui-all v0.1.10)
+当前 DSH 实例已安装以下插件：
 
-| 插件 ID | 包名 | 功能 |
-|---------|------|------|
-| `ui-web-ui-compat` | `@linxin666/dsh-web-ui-all` | Web UI 兼容层 |
-| `ui-web-ui-settings` | `@linxin666/dsh-client-ui-web-ui-settings` | Web UI 设置页面 |
-| `ui-dsh-aionui-panel` | `@linxin666/dsh-client-ui-aionui-panel` | 右侧面板系统（文件树、预览、SCM 变更） |
-| `ui-task-board` | `@linxin666/dsh-client-ui-task-board` | 任务看板（支持 cron 定时任务） |
-| `ui-git-graph` | `@linxin666/dsh-client-ui-git-graph` | Git 图形化界面 |
-| `pet` | `@linxin666/dsh-pet` | 宠物挂件 |
-| `remote-web-ui` | `@linxin666/dsh-remote-web-ui` | 远程 Web UI |
-| `live-stats` | `@linxin666/dsh-live-stats` | 实时统计 |
-| `ssh` | `@linxin666/dsh-ssh` | SSH 远程运维 |
-| `ui-skin-center` | `@linxin666/dsh-client-ui-skin-center` | 皮肤中心 |
+### 核心包 (4个)
+- @deepseek-ai/dsh
+- @deepseek-ai/dsh-base
+- @deepseek-ai/dsh-web-app
+- @deepseek-ai/dsh-headless
 
-### 皮肤插件 (来自 @linxin666/dsh-skins v0.1.10)
+### 社区插件 (10个)
+来自 @linxin666/dsh-web-ui-all 全家桶：
+- 任务看板 (task-board)
+- 右侧面板 (aionui-panel)
+- Git 图形化 (git-graph)
+- Web UI 设置 (web-ui-settings)
+- 宠物挂件 (pet)
+- SSH 远程运维 (ssh)
+- 实时统计 (live-stats)
+- 远程 Web UI (remote-web-ui)
+- 皮肤系统 (skins)
+- 兼容层 (web-ui-all)
 
-| 皮肤 ID | 包名 | 说明 |
-|---------|------|------|
-| `dsh-client-ui-skin-blue-fantasy` | `@linxin666/dsh-skins/skins/blue-fantasy` | 蓝色幻想主题 |
-| `dsh-client-ui-skin-miku` | `@linxin666/dsh-skins/skins/miku` | 初音未来主题 |
-| `dsh-client-ui-skin-ths` | `@linxin666/dsh-skins/skins/ths` | 同花顺主题 |
-| `dsh-client-ui-skin-trading` | `@linxin666/dsh-skins/skins/trading` | 交易主题 |
+### 插件商店 (1个)
+- dsh-plugin-store
 
-### 插件商店
+### 自定义插件 (3个)
+- dsh-ocr (OCR 视觉识别)
+- attach-plus (文件上传增强)
+- web-search-scrape (网页搜索)
 
-| 包名 | 版本 | 说明 |
-|------|------|------|
-| `dsh-plugin-store` | 0.1.0 | DSH 插件商店（GitHub: w769721503/dsh-plugin-store） |
+**总计: 18个插件**
 
-### 自定义插件
+## 🚀 安装提示词
 
-| 插件 ID | 包名 | 功能 | 来源 |
-|---------|------|------|------|
-| `dsh-ocr` | `dsh-ocr` | OCR 视觉识别插件 | `<local>/projects/mcp-ds-ocr` |
-| `attach-plus` | `attach-plus` | 输入框 "+" 上传按钮 | `<local>/projects/dsh-local-upload` |
-| `web-search-scrape` | `web-search-scrape` | 自定义网页搜索（DuckDuckGo/Bing/Baidu/Google） | 本地配置 |
+将以下提示词发送给 AI 助手，即可自动安装 list.md 中的所有插件：
 
-## 📁 仓库结构
+---
+
+**提示词：**
 
 ```
-dsh-plugins-list/
-├── README.md                    # 本文件
-├── plugins.json                 # 插件列表 JSON 格式
-├── installed-packages.md        # 已安装 npm 包详情
-├── profiles/
-│   ├── web/                     # Web profile 配置
-│   │   ├── package.json
-│   │   └── cordis.patch.yml
-│   └── headless/                # Headless profile 配置
-│       └── package.json
-└── configurations/
-    ├── settings.yaml            # DSH 设置文件
-    └── cordis.patch.yml         # 主 cordis 补丁配置
+请安装 list.md 中的插件，并使用每个插件的仓库所要求的安装方式或通用规范方式来安装。如果有插件商店插件可以尝试通过插件商店安装，确保插件和 list.md 的完全匹配即可。
+
+具体步骤：
+1. 首先读取 list.md 文件获取完整插件列表
+2. 对于每个插件，访问其仓库地址查看安装说明
+3. 按照仓库要求的方式安装插件：
+   - 如果仓库有 README 安装说明，按照说明操作
+   - 如果是 npm 包，使用 npm install 或 pnpm add 安装
+   - 如果是插件商店插件，通过 dsh-plugin-store 安装
+4. 安装完成后，更新 DSH 配置文件（如 cordis.patch.yml）
+5. 重启 DSH Web 服务使插件生效
+
+注意事项：
+- 保持插件版本与 list.md 中记录的一致
+- 自定义插件需要手动配置路径
+- 安装前备份现有配置
 ```
 
-## 🔧 配置说明
+---
 
-### Web Profile 插件配置
+## 📝 使用说明
 
-Web profile 的插件通过 `@linxin666/dsh-web-ui-all` 聚合包安装，包含以下功能模块：
+### 查看插件列表
+```bash
+# 查看所有插件
+cat list.md
 
-- **任务看板** (`ui-task-board`): 多列看板管理任务，支持 5 段 cron 定时执行
-- **右侧面板** (`ui-dsh-aionui-panel`): Explorer 文件树、Preview 多 tab 预览、SCM 变更面板
-- **SSH 远程运维** (`ssh`): 主机配置、持久连接池、Web 终端
-- **宠物挂件** (`pet`): 可爱的桌面宠物
-- **Git 图形化** (`ui-git-graph`): 可视化 Git 历史
-- **皮肤系统** (`dsh-skins`): 多种主题皮肤
-
-### 自定义插件配置
-
-自定义插件通过 `cordis.patch.yml` 注入到 Web profile：
-
-```yaml
-# 网页搜索插件
-- insert:
-    - id: web-search-scrape
-      name: 'web-search-scrape'
-      config:
-        engines: [duckduckgo, bing, baidu, google, yandex]
-        socials: [weixin, bilibili, weibo, x, zhihu, douyin, reddit]
-
-# OCR 视觉识别插件
-- insert:
-    - id: dsh-ocr
-      name: 'dsh-ocr'
-      config: {}
-
-# 文件上传插件
-- insert:
-    - id: attach-plus
-      name: 'attach-plus'
-      config: {}
+# 或使用 GitHub 查看
+# https://github.com/BaihaWhite/dsh-plugins-list/blob/main/list.md
 ```
 
-## 📊 插件统计
+### 安装新插件
+1. 编辑 `list.md` 添加新插件信息
+2. 使用上述提示词让 AI 助手安装
+3. 或手动按照插件仓库说明安装
 
-- **官方核心包**: 4 个
-- **Web UI 插件**: 10 个（来自 @linxin666/dsh-web-ui-all）
-- **皮肤插件**: 4 个
-- **插件商店**: 1 个
-- **自定义插件**: 3 个
-- **总计**: 22 个插件
-
-## 🚀 安装新插件
-
-### 通过插件商店
-
-1. 打开 DSH Web GUI
-2. 进入「设置 → 插件」
-3. 使用 `dsh-plugin-store` 浏览和安装插件
-
-### 手动安装
-
-1. 将插件包放入 `~/.dsh/profiles/web/node_modules/` 目录
-2. 在 `cordis.patch.yml` 中添加插件配置
-3. 重启 DSH Web 服务
-
-## 📝 更新日志
-
-- **2026-08-23**: 创建插件列表仓库，记录当前已安装的 22 个插件
-- **2026-08-16**: 安装自定义插件（dsh-ocr, attach-plus, web-search-scrape）
-- **2026-08-15**: 安装 @linxin666/dsh-web-ui-all 全家桶插件
+### 更新插件
+1. 检查各插件仓库的最新版本
+2. 更新 `list.md` 中的版本信息
+3. 使用包管理器更新插件
 
 ## 🔗 相关链接
 
 - [DSH 官方仓库](https://github.com/deepseek-ai/dsh)
 - [dsh-web-ui 全家桶](https://github.com/zhu1090093659/dsh-web-ui)
 - [dsh-plugin-store](https://github.com/w769721503/dsh-plugin-store)
-- [DSH 文档](https://dsh.deepseek.com)
 
 ## 📄 许可证
 
-本仓库中的文档和配置文件遵循 MIT 许可证。各插件的许可证请参考各自的原始仓库。
+本仓库遵循 MIT 许可证。各插件的许可证请参考各自的原始仓库。
