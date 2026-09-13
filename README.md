@@ -44,7 +44,7 @@
 - dsh-plugin-store
 
 ### 自建插件 (1个)
-- web-search-scrape（六档分级抓取式网页检索，[BaihaWhite/dsh-web-search-scrape](https://github.com/BaihaWhite/dsh-web-search-scrape)）
+- web-search-scrape（可切换后端的网页检索：`local` 六档抓取 / `official` 内置 DeepSeek 搜索，设置卡片实时切换，[BaihaWhite/dsh-web-search-scrape](https://github.com/BaihaWhite/dsh-web-search-scrape)）
 
 ### 本次排除项 (2个)
 - dsh-ocr
@@ -72,16 +72,17 @@
    - dsh plugin --profile web add @linxin666/dsh-web-all@0.3.20
    - dsh plugin --profile web add dsh-plugin-store@0.1.0
    - dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape
-     （自建插件，公开仓库；装好后还需按该仓库 README
+     （自建插件，公开仓库；要求 DSH >= 0.1.5-rc.2。装好后还需按该仓库 README
       配置 cordis.patch.yml——把 web.searchProvider 指向 web-scrape、停用内置
-      tool-web 的 search、并把插件加入 insert 段）
+      tool-web 的 search、并把插件加入 insert 段；web-search-deepseek 保持启用）
 4. 预检：dsh --profile web --dump-config，确认没有 "Cannot find package" 报错
 5. 重启 dsh web 使插件生效
 
 注意事项：
 - 排除 list.md「本次排除项」中的 dsh-ocr 与 attach-plus，不要安装
 - web-search-scrape 已从「排除项」移入 list.md 第四节「自建插件」，现在可自动恢复；
-  该仓库为公开仓库，无需 GitHub 凭据即可 clone
+  该仓库为公开仓库，无需 GitHub 凭据即可 clone。**必须用 v1.1.0+**（v1.0.0 在
+  DSH 0.1.5-rc.2 上会因设置 API 变更直接加载失败）
 - 不要重复安装旧名包（aionui-panel / live-stats / dsh-skins / dsh-web-ui-all），已被新全家桶取代，重复装会因 id 冲突挂载失败
 - 安装前备份 package.json、cordis.patch.yml、pnpm-workspace.yaml
 - 皮肤 blue-fantasy 随 skin-center 内置，miku / ths / trading 需从创意工坊按需安装

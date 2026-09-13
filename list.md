@@ -51,7 +51,9 @@
 
 | 插件名称 | 版本 | 仓库 | 说明 |
 |----------|------|------|------|
-| web-search-scrape | 1.0.0 | [GitHub](https://github.com/BaihaWhite/dsh-web-search-scrape) | 自建：六档分级（T1 极速 → T6 研究）抓取式网页检索 provider `web-scrape` + `web_search` 工具，抓 DuckDuckGo / Bing / Baidu / Google / Yandex 与 7 个社交平台，**无需 API key** |
+| web-search-scrape | 1.1.0 | [GitHub](https://github.com/BaihaWhite/dsh-web-search-scrape) | 自建：**可切换后端**的网页检索 provider `web-scrape` + `web_search` 工具。`local` = 六档分级（T1 极速 → T6 研究）抓取 DuckDuckGo / Bing / Baidu / Google / Yandex 与 7 个社交平台，无需 API key；`official` = 委托内置 DeepSeek 搜索。设置卡片里实时切换，MIT 许可 |
+
+> **要求 DSH `>= 0.1.5-rc.2`**（见该仓库 `package.json` 的 `dsh.engines.dsh`）。v1.0.0 在该版本上会因设置 API 变更**直接加载失败**，必须用 1.1.0+。
 
 安装（公开仓库，无需认证）：
 
@@ -59,13 +61,15 @@
 # 标准方式：作为 git 依赖安装
 dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape
 
-# 或本地目录 + 符号链接（本机当前采用的方式）
+# 或本地目录 + 符号链接（克隆目录必须放在 profile 内，否则裸导入解析不到宿主包）
 cd ~/.dsh/profiles/web
 git clone https://github.com/BaihaWhite/dsh-web-search-scrape.git web-search-scrape
 ln -s ../web-search-scrape node_modules/web-search-scrape
 ```
 
-装好后还需在 `cordis.patch.yml` 中把 `web.searchProvider` 指到 `web-scrape`、停用内置 `tool-web` 的 search、并把本插件加入 insert 段——完整片段与全部配置项见该仓库 README。
+装好后还需在 `cordis.patch.yml` 中把 `web.searchProvider` 指到 `web-scrape`、停用内置 `tool-web` 的 search、并把本插件加入 insert 段。
+
+**注意**：`web-search-deepseek` 行要**保持启用**（1.1.0 起不再 disabled）——它既是 `backend: official` 的委托目标，也提供官方「Web search」设置卡片。完整片段、全部配置项与兼容性说明见该仓库 README。
 
 ## 五、皮肤
 
