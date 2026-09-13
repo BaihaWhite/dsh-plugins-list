@@ -65,3 +65,20 @@ Thumbs.db
 *.bak-*
 *.backup
 *.log.bak-*
+
+# Secrets & credentials — never commit
+# ~/.dsh/.credentials.yaml 保存 <credential-name> / <credential-name> / <credential-name> 等明文值
+.credentials.yaml
+**/.credentials.yaml
+credentials.yaml
+credentials.json
+secrets.yaml
+secrets.json
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+.env.*
+!.env.example
