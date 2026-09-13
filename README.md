@@ -5,11 +5,11 @@
 ## 📋 仓库内容
 
 - **README.md** - 本文件，包含仓库介绍和安装提示词
-- **list.md** - 完整的插件列表，包含所有插件的项目网址
+- **list.md** - 完整的插件列表，包含所有插件的项目网址与版本
 
 ## 🔍 已安装插件概览
 
-当前 DSH 实例已安装以下插件：
+当前 DSH 实例（`~/.dsh/profiles/web`，DSH `0.1.5-rc.2`）已安装 **26 个包**：
 
 ### 核心包 (4个)
 - @deepseek-ai/dsh
@@ -17,54 +17,65 @@
 - @deepseek-ai/dsh-web-app
 - @deepseek-ai/dsh-headless
 
-### 社区插件 (10个)
-来自 @linxin666/dsh-web-ui-all 全家桶：
+### 社区插件全家桶 (1 聚合包 → 19 子插件 + 1 外部插件)
+来自 `@linxin666/dsh-web-all@0.3.20`：
 - 任务看板 (task-board)
-- 右侧面板 (aionui-panel)
 - Git 图形化 (git-graph)
 - Web UI 设置 (web-ui-settings)
 - 宠物挂件 (pet)
 - SSH 远程运维 (ssh)
-- 实时统计 (live-stats)
 - 远程 Web UI (remote-web-ui)
-- 皮肤系统 (skins)
-- 兼容层 (web-ui-all)
+- 使用统计 (usage)
+- 会话归档 (session-archive)
+- 模型能力 (model-capabilities)
+- 皮肤中心 (skin-center)
+- 预设中心 (preset-center)
+- 技能浏览器 (skill-explorer)
+- 插件管理器 (plugin-manager)
+- 社区插件 (community-plugins)
+- 创意工坊 (market)
+- 图片描述 (describe-image)
+- 环境诊断 (doctor)
+- 国际化 (i18n)
+- 量神 (liangshen)
+- 右侧面板 (dsh-better-sidebar，外部集成)
 
 ### 插件商店 (1个)
 - dsh-plugin-store
 
-### 自定义插件 (3个)
-- dsh-ocr (OCR 视觉识别)
-- attach-plus (文件上传增强)
-- web-search-scrape (网页搜索)
+### 本次排除项 (2个)
+- dsh-ocr
+- attach-plus
 
-**总计: 18个插件**
+> 旧清单中的 `aionui-panel`、`live-stats`、`dsh-skins` 已被新全家桶取代
+> （分别对应 `dsh-better-sidebar`、`dsh-usage`、`skin-center`），详见 list.md 的名称对照表。
 
 ## 🚀 安装提示词
 
-将以下提示词发送给 AI 助手，即可自动安装 list.md 中的所有插件：
+将以下提示词发送给 AI 助手，即可自动恢复 list.md 中的全部插件：
 
 ---
 
 **提示词：**
 
 ```
-请安装 list.md 中的插件，并使用每个插件的仓库所要求的安装方式或通用规范方式来安装。如果有插件商店插件可以尝试通过插件商店安装，确保插件和 list.md 的完全匹配即可。
+请按 list.md 恢复本机 DSH 插件，使用 list.md 记录的安装方式。
 
 具体步骤：
-1. 首先读取 list.md 文件获取完整插件列表
-2. 对于每个插件，访问其仓库地址查看安装说明
-3. 按照仓库要求的方式安装插件：
-   - 如果仓库有 README 安装说明，按照说明操作
-   - 如果是 npm 包，使用 npm install 或 pnpm add 安装
-   - 如果是插件商店插件，通过 dsh-plugin-store 安装
-4. 安装完成后，更新 DSH 配置文件（如 cordis.patch.yml）
-5. 重启 DSH Web 服务使插件生效
+1. 读取 list.md 获取完整插件清单与「本次排除项」
+2. 确认目标 profile 为 ~/.dsh/profiles/web，并按 list.md「安装排障要点」调整 pnpm-workspace.yaml
+   （nodeLinker: hoisted、minimumReleaseAgeExclude: '@linxin666/*'、allowBuilds: cloudflared/cpu-features/node-pty/ssh2）
+3. 依次执行安装命令：
+   - dsh plugin --profile web add @linxin666/dsh-web-all@latest
+   - dsh plugin --profile web add dsh-plugin-store@latest
+4. 预检：dsh --profile web --dump-config，确认没有 "Cannot find package" 报错
+5. 重启 dsh web 使插件生效
 
 注意事项：
-- 保持插件版本与 list.md 中记录的一致
-- 自定义插件需要手动配置路径
-- 安装前备份现有配置
+- 排除 list.md「本次排除项」中的 dsh-ocr 与 attach-plus，不要安装
+- 不要重复安装旧名包（aionui-panel / live-stats / dsh-skins / dsh-web-ui-all），已被新全家桶取代，重复装会因 id 冲突挂载失败
+- 安装前备份 package.json、cordis.patch.yml、pnpm-workspace.yaml
+- 皮肤 blue-fantasy 随 skin-center 内置，miku / ths / trading 需从创意工坊按需安装
 ```
 
 ---
@@ -88,13 +99,15 @@ cat list.md
 ### 更新插件
 1. 检查各插件仓库的最新版本
 2. 更新 `list.md` 中的版本信息
-3. 使用包管理器更新插件
+3. 重启 `dsh web` 后可在「设置 → 插件」中一键更新
 
 ## 🔗 相关链接
 
 - [DSH 官方仓库](https://github.com/deepseek-ai/dsh)
-- [dsh-web-ui 全家桶](https://github.com/zhu1090093659/dsh-web-ui)
-- [dsh-plugin-store](https://github.com/w769721503/dsh-plugin-store)
+- [dsh-web 全家桶](https://github.com/zhu1090093659/dsh-web)
+- [dsh-plugin-store 插件商店](https://github.com/yunhuantian/dsh-plugin-hub)
+- [dsh-better-sidebar 右侧面板](https://github.com/omdsh-dev/DSH-better-sidebar)
+- [创意工坊 dsh-market.com](https://dsh-market.com)
 
 ## 📄 许可证
 
