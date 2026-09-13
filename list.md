@@ -47,22 +47,41 @@
 |----------|------|------|------|
 | dsh-plugin-store | 0.1.0 | [GitHub](https://github.com/yunhuantian/dsh-plugin-hub) | 插件商店：浏览 / 搜索 / 一键安装 / 更新 / 卸载 |
 
-## 四、皮肤
+## 四、自建插件（1）
+
+| 插件名称 | 版本 | 仓库 | 说明 |
+|----------|------|------|------|
+| web-search-scrape | 1.0.0 | [GitHub](https://github.com/BaihaWhite/dsh-web-search-scrape)（私有） | 自建：六档分级（T1 极速 → T6 研究）抓取式网页检索 provider `web-scrape` + `web_search` 工具，抓 DuckDuckGo / Bing / Baidu / Google / Yandex 与 7 个社交平台，**无需 API key** |
+
+安装（私有仓库，需已配置 GitHub 凭据）：
+
+```sh
+# 标准方式：作为 git 依赖安装
+dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape
+
+# 或本地目录 + 符号链接（本机当前采用的方式）
+cd ~/.dsh/profiles/web
+git clone https://github.com/BaihaWhite/dsh-web-search-scrape.git web-search-scrape
+ln -s ../web-search-scrape node_modules/web-search-scrape
+```
+
+装好后还需在 `cordis.patch.yml` 中把 `web.searchProvider` 指到 `web-scrape`、停用内置 `tool-web` 的 search、并把本插件加入 insert 段——完整片段与全部配置项见该仓库 README。
+
+## 五、皮肤
 
 | 皮肤 | 来源 | 状态 |
 |------|------|------|
 | blue-fantasy | `@linxin666/dsh-client-ui-skin-center` 内置 | 已启用（见 `~/.dsh/skin-center-active.json`） |
 | miku / ths / trading | [创意工坊 dsh-market.com](https://dsh-market.com) | 未安装，按需从工坊获取 |
 
-## 五、本次排除项
+## 六、本次排除项（2）
 
 | 插件 | 说明 |
 |------|------|
 | dsh-ocr | 按需排除，未安装 |
 | attach-plus | 按需排除，未安装 |
-| web-search-scrape | 纯本地自定义插件，无仓库、无 npm 包，未纳入自动恢复 |
 
-## 六、与旧清单的名称对照
+## 七、与旧清单的名称对照
 
 | 旧名称 | 现名称 / 替代 |
 |--------|---------------|
@@ -70,8 +89,9 @@
 | `@linxin666/dsh-client-ui-aionui-panel` | `dsh-better-sidebar`（右侧面板底座，功能更强） |
 | `@linxin666/dsh-live-stats` | `@linxin666/dsh-usage`（使用统计） |
 | `@linxin666/dsh-skins` | `@linxin666/dsh-client-ui-skin-center`（皮肤中心） |
+| `web-search-scrape`（纯本地，无仓库） | 已有私有仓库 [BaihaWhite/dsh-web-search-scrape](https://github.com/BaihaWhite/dsh-web-search-scrape)，从「排除项」移入第四节，可自动恢复 |
 
-## 七、安装命令
+## 八、安装命令
 
 ```sh
 # 1) 社区插件全家桶（含 19 个子插件 + better-sidebar）
@@ -83,13 +103,16 @@ dsh plugin --profile web add @linxin666/dsh-web-all@0.3.20
 # 2) 插件商店
 dsh plugin --profile web add dsh-plugin-store@0.1.0
 
-# 3) 预检：确认没有 Cannot find package 报错
+# 3) 自建插件（私有仓库，需 GitHub 凭据）
+dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape
+
+# 4) 预检：确认没有 Cannot find package 报错
 dsh --profile web --dump-config | grep -i "cannot find"
 
-# 4) 重启 dsh web 生效（页面刷新不够）
+# 5) 重启 dsh web 生效（页面刷新不够）
 ```
 
-## 八、安装排障要点（profile：`~/.dsh/profiles/web`）
+## 九、安装排障要点（profile：`~/.dsh/profiles/web`）
 
 `pnpm-workspace.yaml` 应包含：
 
