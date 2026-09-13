@@ -44,7 +44,7 @@
 - dsh-plugin-store
 
 ### 自建插件 (1个)
-- web-search-scrape 1.3.0（可切换后端 + **计费硬保险**的网页检索：`local` 六档抓取零费用 / `official` 计费但默认被 `allowOfficial: false` 拦住；另含不被预设遮蔽的 `web_search_deep`。零配置安装，[BaihaWhite/dsh-web-search-scrape](https://github.com/BaihaWhite/dsh-web-search-scrape)）
+- web-search-scrape 1.3.1（可切换后端 + **计费硬保险**的网页检索：`local` 六档抓取零费用 / `official` 计费但默认被 `allowOfficial: false` 拦住；另含不被预设遮蔽的 `web_search_deep`。零配置安装，[BaihaWhite/dsh-web-search-scrape](https://github.com/BaihaWhite/dsh-web-search-scrape)）
 
 ### 本次排除项 (2个)
 - dsh-ocr
@@ -71,7 +71,7 @@
 3. 依次执行安装命令（等号后为 list.md 记录的版本，装最新版则把 @0.3.20 换成 @latest）：
    - dsh plugin --profile web add @linxin666/dsh-web-all@0.3.20
    - dsh plugin --profile web add dsh-plugin-store@0.1.0
-   - dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape#v1.3.0
+   - dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape#v1.3.1
      （自建插件，公开仓库；要求 DSH >= 0.1.5-rc.2。仓库自带 dsh.bundle.patch，
       装完即自动挂载，**无需手工改 cordis.patch.yml**；装完重启 host 生效）
 4. 预检：dsh --profile web --dump-config，确认没有 "Cannot find package" 报错
@@ -82,7 +82,7 @@
 - web-search-scrape 已从「排除项」移入 list.md 第四节「自建插件」，现在可自动恢复；
   该仓库为公开仓库，无需 GitHub 凭据即可 clone。**必须用 v1.1.0+**（v1.0.0 在
   DSH 0.1.5-rc.2 上会因设置 API 变更直接加载失败）；要计费保险与 `web_search_deep`
-  需 **v1.2.0+**，建议直接装 `#v1.3.0`
+  需 **v1.2.0+**，建议直接装 `#v1.3.1`
 - 该插件自带 `dsh.bundle.patch`，装完即自动挂载；**若同时手工往 profile 的
   cordis.patch.yml 里写了 insert 段，会因行 id 重复导致 host 无法启动**（loader 抛
   `duplicate loader entry id`）——二选一即可

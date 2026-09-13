@@ -51,7 +51,7 @@
 
 | 插件名称 | 版本 | 仓库 | 说明 |
 |----------|------|------|------|
-| web-search-scrape | 1.3.0 | [GitHub](https://github.com/BaihaWhite/dsh-web-search-scrape) | 自建：**可切换后端 + 计费硬保险**的网页检索。`local` = 六档分级（T1 极速 → T6 研究）抓取 DuckDuckGo / Bing / Baidu / Google / Yandex 与 7 个社交平台，**不调用任何付费 API**；`official` = 委托内置 DeepSeek 搜索（按 token 计费，默认被 `allowOfficial: false` 拦住）。另注册 `web_search_deep`（带 `tier`、上限 130 条，不被预设遮蔽）。MIT 许可 |
+| web-search-scrape | 1.3.1 | [GitHub](https://github.com/BaihaWhite/dsh-web-search-scrape) | 自建：**可切换后端 + 计费硬保险**的网页检索。`local` = 六档分级（T1 极速 → T6 研究）抓取 DuckDuckGo / Bing / Baidu / Google / Yandex 与 7 个社交平台，**不调用任何付费 API**；`official` = 委托内置 DeepSeek 搜索（按 token 计费，默认被 `allowOfficial: false` 拦住）。另注册 `web_search_deep`（带 `tier`、上限 130 条，不被预设遮蔽）。v1.3.1 修复 DDG 解析的丢结果与重复项。MIT 许可 |
 
 > **要求 DSH `>= 0.1.5-rc.2`**（见 `package.json` 的 `dsh.engines.dsh`）。v1.0.0 在该版本上会因设置 API 变更**直接加载失败**，必须 1.1.0+；计费保险与 `web_search_deep` 需 1.2.0+。
 
@@ -61,14 +61,14 @@
 
 ```sh
 # 推荐：锁定 tag
-dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape#v1.3.0
+dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape#v1.3.1
 
 # 或跟 main
 dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape
 
 # 或 Release tarball（无需 git）
 dsh plugin --profile web add \
-  https://github.com/BaihaWhite/dsh-web-search-scrape/releases/download/v1.3.0/web-search-scrape-1.3.0.tgz
+  https://github.com/BaihaWhite/dsh-web-search-scrape/releases/download/v1.3.1/web-search-scrape-1.3.1.tgz
 ```
 
 装完**重启 host**（`dsh web`）生效。仓库带 `dsh-plugin` topic，插件商店可检索到。
