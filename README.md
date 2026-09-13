@@ -44,7 +44,7 @@
 - dsh-plugin-store
 
 ### 自建插件 (1个)
-- web-search-scrape（可切换后端的网页检索：`local` 六档抓取 / `official` 内置 DeepSeek 搜索，设置卡片实时切换，[BaihaWhite/dsh-web-search-scrape](https://github.com/BaihaWhite/dsh-web-search-scrape)）
+- web-search-scrape（可切换后端的网页检索：`local` 六档抓取 / `official` 内置 DeepSeek 搜索，设置卡片实时切换且默认收起，[BaihaWhite/dsh-web-search-scrape](https://github.com/BaihaWhite/dsh-web-search-scrape)）
 
 ### 本次排除项 (2个)
 - dsh-ocr

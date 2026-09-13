@@ -51,7 +51,7 @@
 
 | 插件名称 | 版本 | 仓库 | 说明 |
 |----------|------|------|------|
-| web-search-scrape | 1.1.0 | [GitHub](https://github.com/BaihaWhite/dsh-web-search-scrape) | 自建：**可切换后端**的网页检索 provider `web-scrape` + `web_search` 工具。`local` = 六档分级（T1 极速 → T6 研究）抓取 DuckDuckGo / Bing / Baidu / Google / Yandex 与 7 个社交平台，无需 API key；`official` = 委托内置 DeepSeek 搜索。设置卡片里实时切换，MIT 许可 |
+| web-search-scrape | 1.1.0 | [GitHub](https://github.com/BaihaWhite/dsh-web-search-scrape) | 自建：**可切换后端**的网页检索 provider `web-scrape` + `web_search` 工具。`local` = 六档分级（T1 极速 → T6 研究）抓取 DuckDuckGo / Bing / Baidu / Google / Yandex 与 7 个社交平台，无需 API key；`official` = 委托内置 DeepSeek 搜索。设置卡片里实时切换（卡片默认收起）。MIT 许可 |
 
 > **要求 DSH `>= 0.1.5-rc.2`**（见该仓库 `package.json` 的 `dsh.engines.dsh`）。v1.0.0 在该版本上会因设置 API 变更**直接加载失败**，必须用 1.1.0+。
 
