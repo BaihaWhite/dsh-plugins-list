@@ -8,10 +8,10 @@
 
 | 包名 | 版本 | 说明 |
 |------|------|------|
-| [@deepseek-ai/dsh](https://github.com/deepseek-ai/dsh) | 0.1.5-rc.2 | DSH 核心引擎（CLI） |
-| [@deepseek-ai/dsh-base](https://github.com/deepseek-ai/dsh) | 随核心包 | 基础 bundle：工具、会话、Web 搜索 / 抓取等 |
-| [@deepseek-ai/dsh-web-app](https://github.com/deepseek-ai/dsh) | 随核心包 | Web 应用 bundle |
-| [@deepseek-ai/dsh-headless](https://github.com/deepseek-ai/dsh) | 随核心包 | 无头模式 bundle（headless profile） |
+| [@deepseek-ai/dsh](https://www.npmjs.com/package/@deepseek-ai/dsh) | 0.1.5-rc.2 | DSH 核心引擎（CLI） |
+| [@deepseek-ai/dsh-base](https://www.npmjs.com/package/@deepseek-ai/dsh-base) | 随核心包 | 基础 bundle：工具、会话、Web 搜索 / 抓取等 |
+| [@deepseek-ai/dsh-web-app](https://www.npmjs.com/package/@deepseek-ai/dsh-web-app) | 随核心包 | Web 应用 bundle |
+| [@deepseek-ai/dsh-headless](https://www.npmjs.com/package/@deepseek-ai/dsh-headless) | 随核心包 | 无头模式 bundle（headless profile） |
 
 ## 二、社区插件全家桶（1 聚合包 + 19 子插件 + 1 外部插件）
 

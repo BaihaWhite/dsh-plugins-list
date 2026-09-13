@@ -103,7 +103,7 @@ cat list.md
 
 ## 🔗 相关链接
 
-- [DSH 官方仓库](https://github.com/deepseek-ai/dsh)
+- [DSH 官方包（npm）](https://www.npmjs.com/package/@deepseek-ai/dsh)
 - [dsh-web 全家桶](https://github.com/zhu1090093659/dsh-web)
 - [dsh-plugin-store 插件商店](https://github.com/yunhuantian/dsh-plugin-hub)
 - [dsh-better-sidebar 右侧面板](https://github.com/omdsh-dev/DSH-better-sidebar)
