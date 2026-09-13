@@ -51,25 +51,45 @@
 
 | 插件名称 | 版本 | 仓库 | 说明 |
 |----------|------|------|------|
-| web-search-scrape | 1.1.0 | [GitHub](https://github.com/BaihaWhite/dsh-web-search-scrape) | 自建：**可切换后端**的网页检索 provider `web-scrape` + `web_search` 工具。`local` = 六档分级（T1 极速 → T6 研究）抓取 DuckDuckGo / Bing / Baidu / Google / Yandex 与 7 个社交平台，无需 API key；`official` = 委托内置 DeepSeek 搜索。设置卡片里实时切换（卡片默认收起）。MIT 许可 |
+| web-search-scrape | 1.3.0 | [GitHub](https://github.com/BaihaWhite/dsh-web-search-scrape) | 自建：**可切换后端 + 计费硬保险**的网页检索。`local` = 六档分级（T1 极速 → T6 研究）抓取 DuckDuckGo / Bing / Baidu / Google / Yandex 与 7 个社交平台，**不调用任何付费 API**；`official` = 委托内置 DeepSeek 搜索（按 token 计费，默认被 `allowOfficial: false` 拦住）。另注册 `web_search_deep`（带 `tier`、上限 130 条，不被预设遮蔽）。MIT 许可 |
 
-> **要求 DSH `>= 0.1.5-rc.2`**（见该仓库 `package.json` 的 `dsh.engines.dsh`）。v1.0.0 在该版本上会因设置 API 变更**直接加载失败**，必须用 1.1.0+。
+> **要求 DSH `>= 0.1.5-rc.2`**（见 `package.json` 的 `dsh.engines.dsh`）。v1.0.0 在该版本上会因设置 API 变更**直接加载失败**，必须 1.1.0+；计费保险与 `web_search_deep` 需 1.2.0+。
 
-安装（公开仓库，无需认证）：
+### 安装（零配置，无需手工改补丁）
+
+仓库自带 `cordis.patch.yml` 并声明 `dsh.bundle.patch`，装完即自动挂载：
 
 ```sh
-# 标准方式：作为 git 依赖安装
+# 推荐：锁定 tag
+dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape#v1.3.0
+
+# 或跟 main
 dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape
 
-# 或本地目录 + 符号链接（克隆目录必须放在 profile 内，否则裸导入解析不到宿主包）
+# 或 Release tarball（无需 git）
+dsh plugin --profile web add \
+  https://github.com/BaihaWhite/dsh-web-search-scrape/releases/download/v1.3.0/web-search-scrape-1.3.0.tgz
+```
+
+装完**重启 host**（`dsh web`）生效。仓库带 `dsh-plugin` topic，插件商店可检索到。
+
+<details>
+<summary>本地克隆 + 符号链接时才需要手工补丁</summary>
+
+克隆目录**必须放在 profile 内**，否则裸导入解析不到宿主包：
+
+```sh
 cd ~/.dsh/profiles/web
 git clone https://github.com/BaihaWhite/dsh-web-search-scrape.git web-search-scrape
 ln -s ../web-search-scrape node_modules/web-search-scrape
 ```
 
-装好后还需在 `cordis.patch.yml` 中把 `web.searchProvider` 指到 `web-scrape`、停用内置 `tool-web` 的 search、并把本插件加入 insert 段。
+再把仓库里 `cordis.patch.yml` 的内容（`web.searchProvider` 指向 `web-scrape`、停用 `tool-web` 的 search、插入插件行）复制进 profile 的 `cordis.patch.yml`。
 
-**注意**：`web-search-deepseek` 行要**保持启用**（1.1.0 起不再 disabled）——它既是 `backend: official` 的委托目标，也提供官方「Web search」设置卡片。完整片段、全部配置项与兼容性说明见该仓库 README。
+⚠️ **别重复 insert**：loader 对重复行 id 会抛 `duplicate loader entry id`，host 将无法启动。
+</details>
+
+**计费**：默认配置下**零费用** —— `backend: local` 走抓取；`allowOfficial: false` 让官方后端即使被选中也拒绝且不发请求；`maxAutoTier: 3` 阻止「分析/对比/趋势」这类常见词自动升到会派发 LLM 子代理的 T4–T6。`web-search-deepseek` 行保持启用（官方后端的委托目标 + 官方「Web search」设置卡片）。
 
 ## 五、皮肤
 

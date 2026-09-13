@@ -44,7 +44,7 @@
 - dsh-plugin-store
 
 ### 自建插件 (1个)
-- web-search-scrape（可切换后端的网页检索：`local` 六档抓取 / `official` 内置 DeepSeek 搜索，设置卡片实时切换且默认收起，[BaihaWhite/dsh-web-search-scrape](https://github.com/BaihaWhite/dsh-web-search-scrape)）
+- web-search-scrape 1.3.0（可切换后端 + **计费硬保险**的网页检索：`local` 六档抓取零费用 / `official` 计费但默认被 `allowOfficial: false` 拦住；另含不被预设遮蔽的 `web_search_deep`。零配置安装，[BaihaWhite/dsh-web-search-scrape](https://github.com/BaihaWhite/dsh-web-search-scrape)）
 
 ### 本次排除项 (2个)
 - dsh-ocr
@@ -71,10 +71,9 @@
 3. 依次执行安装命令（等号后为 list.md 记录的版本，装最新版则把 @0.3.20 换成 @latest）：
    - dsh plugin --profile web add @linxin666/dsh-web-all@0.3.20
    - dsh plugin --profile web add dsh-plugin-store@0.1.0
-   - dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape
-     （自建插件，公开仓库；要求 DSH >= 0.1.5-rc.2。装好后还需按该仓库 README
-      配置 cordis.patch.yml——把 web.searchProvider 指向 web-scrape、停用内置
-      tool-web 的 search、并把插件加入 insert 段；web-search-deepseek 保持启用）
+   - dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape#v1.3.0
+     （自建插件，公开仓库；要求 DSH >= 0.1.5-rc.2。仓库自带 dsh.bundle.patch，
+      装完即自动挂载，**无需手工改 cordis.patch.yml**；装完重启 host 生效）
 4. 预检：dsh --profile web --dump-config，确认没有 "Cannot find package" 报错
 5. 重启 dsh web 使插件生效
 
@@ -82,7 +81,12 @@
 - 排除 list.md「本次排除项」中的 dsh-ocr 与 attach-plus，不要安装
 - web-search-scrape 已从「排除项」移入 list.md 第四节「自建插件」，现在可自动恢复；
   该仓库为公开仓库，无需 GitHub 凭据即可 clone。**必须用 v1.1.0+**（v1.0.0 在
-  DSH 0.1.5-rc.2 上会因设置 API 变更直接加载失败）
+  DSH 0.1.5-rc.2 上会因设置 API 变更直接加载失败）；要计费保险与 `web_search_deep`
+  需 **v1.2.0+**，建议直接装 `#v1.3.0`
+- 该插件自带 `dsh.bundle.patch`，装完即自动挂载；**若同时手工往 profile 的
+  cordis.patch.yml 里写了 insert 段，会因行 id 重复导致 host 无法启动**（loader 抛
+  `duplicate loader entry id`）——二选一即可
+- 默认配置下搜索**零费用**：`backend: local` + `allowOfficial: false` + `maxAutoTier: 3`
 - 不要重复安装旧名包（aionui-panel / live-stats / dsh-skins / dsh-web-ui-all），已被新全家桶取代，重复装会因 id 冲突挂载失败
 - 安装前备份 package.json、cordis.patch.yml、pnpm-workspace.yaml
 - 皮肤 blue-fantasy 随 skin-center 内置，miku / ths / trading 需从创意工坊按需安装
