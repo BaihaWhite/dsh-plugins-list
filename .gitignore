@@ -67,13 +67,15 @@ Thumbs.db
 *.log.bak-*
 
 # Secrets & credentials — never commit
-# ~/.dsh/.credentials.yaml 保存 <credential-name> / <credential-name> / <credential-name> 等明文值
+# 本地凭据与设置文件一律不入库（含各 profile 下的副本）
 .credentials.yaml
 **/.credentials.yaml
 credentials.yaml
 credentials.json
 secrets.yaml
 secrets.json
+settings.yaml
+**/settings.yaml
 *.pem
 *.key
 *.p12

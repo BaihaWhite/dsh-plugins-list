@@ -43,16 +43,17 @@
 ### 插件商店 (1个)
 - dsh-plugin-store
 
-### 本次排除项 (2个)
+### 本次排除项 (3个)
 - dsh-ocr
 - attach-plus
+- web-search-scrape（纯本地插件，无仓库可装）
 
 > 旧清单中的 `aionui-panel`、`live-stats`、`dsh-skins` 已被新全家桶取代
 > （分别对应 `dsh-better-sidebar`、`dsh-usage`、`skin-center`），详见 list.md 的名称对照表。
 
 ## 🚀 安装提示词
 
-将以下提示词发送给 AI 助手，即可自动恢复 list.md 中的全部插件：
+将以下提示词发送给 AI 助手，即可按 list.md 记录的版本恢复全部插件：
 
 ---
 
@@ -65,9 +66,9 @@
 1. 读取 list.md 获取完整插件清单与「本次排除项」
 2. 确认目标 profile 为 ~/.dsh/profiles/web，并按 list.md「安装排障要点」调整 pnpm-workspace.yaml
    （nodeLinker: hoisted、minimumReleaseAgeExclude: '@linxin666/*'、allowBuilds: cloudflared/cpu-features/node-pty/ssh2）
-3. 依次执行安装命令：
-   - dsh plugin --profile web add @linxin666/dsh-web-all@latest
-   - dsh plugin --profile web add dsh-plugin-store@latest
+3. 依次执行安装命令（等号后为 list.md 记录的版本，装最新版则把 @0.3.20 换成 @latest）：
+   - dsh plugin --profile web add @linxin666/dsh-web-all@0.3.20
+   - dsh plugin --profile web add dsh-plugin-store@0.1.0
 4. 预检：dsh --profile web --dump-config，确认没有 "Cannot find package" 报错
 5. 重启 dsh web 使插件生效
 
@@ -76,6 +77,7 @@
 - 不要重复安装旧名包（aionui-panel / live-stats / dsh-skins / dsh-web-ui-all），已被新全家桶取代，重复装会因 id 冲突挂载失败
 - 安装前备份 package.json、cordis.patch.yml、pnpm-workspace.yaml
 - 皮肤 blue-fantasy 随 skin-center 内置，miku / ths / trading 需从创意工坊按需安装
+- 本清单是**版本快照**：npm 上的最新版可能已高于此记录的版本
 ```
 
 ---

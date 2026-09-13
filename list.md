@@ -2,7 +2,7 @@
 
 > 记录当前 DSH 实例已安装的插件，用于在新环境按本清单快速恢复。
 > 实例：`~/.dsh/profiles/web` ｜ DSH `0.1.5-rc.2` ｜ Node.js `v22.23.2` ｜ pnpm `11.26.0`
-> 最后更新：2026-09-11
+> 最后更新：2026-09-13（版本为快照记录，npm 最新版可能更高）
 
 ## 一、官方核心包（4）
 
@@ -75,10 +75,13 @@
 
 ```sh
 # 1) 社区插件全家桶（含 19 个子插件 + better-sidebar）
-dsh plugin --profile web add @linxin666/dsh-web-all@latest
+#    装本清单记录的版本：
+dsh plugin --profile web add @linxin666/dsh-web-all@0.3.20
+#    或装 npm 最新版：
+# dsh plugin --profile web add @linxin666/dsh-web-all@latest
 
 # 2) 插件商店
-dsh plugin --profile web add dsh-plugin-store@latest
+dsh plugin --profile web add dsh-plugin-store@0.1.0
 
 # 3) 预检：确认没有 Cannot find package 报错
 dsh --profile web --dump-config | grep -i "cannot find"
