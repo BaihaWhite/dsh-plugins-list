@@ -51,9 +51,9 @@
 
 | 插件名称 | 版本 | 仓库 | 说明 |
 |----------|------|------|------|
-| web-search-scrape | 1.0.0 | [GitHub](https://github.com/BaihaWhite/dsh-web-search-scrape)（私有） | 自建：六档分级（T1 极速 → T6 研究）抓取式网页检索 provider `web-scrape` + `web_search` 工具，抓 DuckDuckGo / Bing / Baidu / Google / Yandex 与 7 个社交平台，**无需 API key** |
+| web-search-scrape | 1.0.0 | [GitHub](https://github.com/BaihaWhite/dsh-web-search-scrape) | 自建：六档分级（T1 极速 → T6 研究）抓取式网页检索 provider `web-scrape` + `web_search` 工具，抓 DuckDuckGo / Bing / Baidu / Google / Yandex 与 7 个社交平台，**无需 API key** |
 
-安装（私有仓库，需已配置 GitHub 凭据）：
+安装（公开仓库，无需认证）：
 
 ```sh
 # 标准方式：作为 git 依赖安装
@@ -89,7 +89,7 @@ ln -s ../web-search-scrape node_modules/web-search-scrape
 | `@linxin666/dsh-client-ui-aionui-panel` | `dsh-better-sidebar`（右侧面板底座，功能更强） |
 | `@linxin666/dsh-live-stats` | `@linxin666/dsh-usage`（使用统计） |
 | `@linxin666/dsh-skins` | `@linxin666/dsh-client-ui-skin-center`（皮肤中心） |
-| `web-search-scrape`（纯本地，无仓库） | 已有私有仓库 [BaihaWhite/dsh-web-search-scrape](https://github.com/BaihaWhite/dsh-web-search-scrape)，从「排除项」移入第四节，可自动恢复 |
+| `web-search-scrape`（纯本地，无仓库） | 已有公开仓库 [BaihaWhite/dsh-web-search-scrape](https://github.com/BaihaWhite/dsh-web-search-scrape)，从「排除项」移入第四节，可自动恢复 |
 
 ## 八、安装命令
 
@@ -103,7 +103,7 @@ dsh plugin --profile web add @linxin666/dsh-web-all@0.3.20
 # 2) 插件商店
 dsh plugin --profile web add dsh-plugin-store@0.1.0
 
-# 3) 自建插件（私有仓库，需 GitHub 凭据）
+# 3) 自建插件（公开仓库）
 dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape
 
 # 4) 预检：确认没有 Cannot find package 报错

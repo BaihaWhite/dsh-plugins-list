@@ -44,7 +44,7 @@
 - dsh-plugin-store
 
 ### 自建插件 (1个)
-- web-search-scrape（六档分级抓取式网页检索，私有仓库 [BaihaWhite/dsh-web-search-scrape](https://github.com/BaihaWhite/dsh-web-search-scrape)）
+- web-search-scrape（六档分级抓取式网页检索，[BaihaWhite/dsh-web-search-scrape](https://github.com/BaihaWhite/dsh-web-search-scrape)）
 
 ### 本次排除项 (2个)
 - dsh-ocr
@@ -72,7 +72,7 @@
    - dsh plugin --profile web add @linxin666/dsh-web-all@0.3.20
    - dsh plugin --profile web add dsh-plugin-store@0.1.0
    - dsh plugin --profile web add github:BaihaWhite/dsh-web-search-scrape
-     （自建插件，私有仓库：需要已配置 GitHub 凭据；装好后还需按该仓库 README
+     （自建插件，公开仓库；装好后还需按该仓库 README
       配置 cordis.patch.yml——把 web.searchProvider 指向 web-scrape、停用内置
       tool-web 的 search、并把插件加入 insert 段）
 4. 预检：dsh --profile web --dump-config，确认没有 "Cannot find package" 报错
@@ -81,7 +81,7 @@
 注意事项：
 - 排除 list.md「本次排除项」中的 dsh-ocr 与 attach-plus，不要安装
 - web-search-scrape 已从「排除项」移入 list.md 第四节「自建插件」，现在可自动恢复；
-  若目标机器无 GitHub 凭据，改为 clone 私有仓库到 profile 目录再做符号链接
+  该仓库为公开仓库，无需 GitHub 凭据即可 clone
 - 不要重复安装旧名包（aionui-panel / live-stats / dsh-skins / dsh-web-ui-all），已被新全家桶取代，重复装会因 id 冲突挂载失败
 - 安装前备份 package.json、cordis.patch.yml、pnpm-workspace.yaml
 - 皮肤 blue-fantasy 随 skin-center 内置，miku / ths / trading 需从创意工坊按需安装
@@ -117,7 +117,7 @@ cat list.md
 - [dsh-web 全家桶](https://github.com/zhu1090093659/dsh-web)
 - [dsh-plugin-store 插件商店](https://github.com/yunhuantian/dsh-plugin-hub)
 - [dsh-better-sidebar 右侧面板](https://github.com/omdsh-dev/DSH-better-sidebar)
-- [dsh-web-search-scrape 自建检索插件](https://github.com/BaihaWhite/dsh-web-search-scrape)（私有）
+- [dsh-web-search-scrape 自建检索插件](https://github.com/BaihaWhite/dsh-web-search-scrape)
 - [创意工坊 dsh-market.com](https://dsh-market.com)
 
 ## 📄 许可证
